@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>demo</title>
+</head>
+<body>
+<div>
+    <form method="post">
+        <div>
+            <p>题目1： 1 + 1 = ？</p>
+            {% if show_answer %}
+            {% if not correct1 %}
+            <p>
+                <span style="color:red">错误</span>
+                <span style="color:green">（答案：2）</span>
+            </p>
+            {% else %}
+            <p>
+                <span style="color:green">正确</span>
+                <span style="color:green">（答案：2）</span>
+            </p>
+            {% endif %}
+            {% endif %}
+            <input name="q1" id="q1">
+            <br>
+            <p>题目2： 你就读的学校名字是？</p>
+            {% if show_answer %}
+            {% if not correct2 %}
+            <p>
+                <span style="color:red">错误</span>
+                <span style="color:green">（答案：文华学院）</span>
+            </p>
+            {% else %}
+            <p>
+                <span style="color:green">正确</span>
+                <span style="color:green">（答案：文华学院）</span>
+            </p>
+            {% endif %}
+            {% endif %}
+            <input name="q2" id="q2">
+            <br>
+            <p>题目3： 中国的首都是？</p>
+            {% if show_answer %}
+            {% if not correct3 %}
+            <p>
+                <span style="color:red">错误</span>
+                <span style="color:green">（答案：北京）</span>
+            </p>
+            {% else %}
+            <p>
+                <span style="color:green">正确</span>
+                <span style="color:green">（答案：北京）</span>
+            </p>
+            {% endif %}
+            {% endif %}
+            <input name="q3" id="q3">
+
+            <br>
+            <input type="submit" value="提交">
+        </div>
+    </form>
+</div>
+</body>
+</html>
