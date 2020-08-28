@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -27,8 +27,25 @@ def init_db():
 
 @app.route('/list')
 def list():
+    products = Product.query.all()
+    return render_template('list.html', **locals())
 
-    return render_template('login.html')
+@app.route('/record', methods=["GET", "POST"])
+def record():
+    if request.method == 'GET':
+        return render_template('record.html')
+    if request.method == 'POST':
+        try:
+            name = request.form.get('name')
+            price = request.form.get('price')
+            color = request.form.get('color')
+            db.session.add(Product(name, color, price))
+            db.session.commit()
+            done = True
+            print("Done")
+        except Exception:
+            done = False
+        return render_template('record.html', done=done)
 
 if __name__=='__main__':
 	app.run(debug=True)
